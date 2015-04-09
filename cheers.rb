@@ -1,15 +1,4 @@
-# print "Hello, what is your name?"
-# name = gets.chomp.upcase
-# def article(l)
-# 	an_letters = "AEIOFHLMRSX"
-# 	if an_letters.include?(l)
-# 		puts "Give me an #{l}"
-# 	else
-# 		puts "Give me a #{l}"
-# 	end
-# end
-# name.each_char {|l| article(l)}
-# puts "That spells "+name+"!"
+require 'date'
 
 def enter_name
 	name = ""
@@ -28,3 +17,14 @@ name.each_char do |letter|
 	puts "Give me #{article}... #{letter}!"
 end
 puts name + "'s just GRAND!"
+
+puts "Hey #{name}, what's your birthday(M-D-Y)?"
+birthday = Date.strptime(gets.chomp, '%m-%d-%Y').yday
+now = DateTime.now.yday
+diff = birthday - now
+if diff < 0 && diff > -180
+	puts "Awesome!  Your birthday was #{diff*-1} days ago! Happy Belated Birthday!"
+	elsif diff < 0 && diff < -180
+		puts "Awesome!  Your birthday is in #{365-(diff*-1)} days! Happy Birthday in advance!"
+	else puts "Awesome!  Your birthday is in #{diff} days! Happy Birthday in advance!"
+end
